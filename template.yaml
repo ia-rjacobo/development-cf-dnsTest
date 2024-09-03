@@ -30,12 +30,12 @@ Resources:
     Type: AWS::Route53::RecordSetGroup
     Properties:
       HostedZoneId: !Ref hostedZoneId
-      Comment: Zone apex alias targeted to LoadBalancer.
+      Comment: Zone apex alias
       RecordSets:
       - Name: !Ref domainName
         Type: A
         AliasTarget:
-          #HostedZoneId: !Ref hostedZoneId
+          HostedZoneId: !Ref hostedZoneId
           DNSName: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint #!GetAtt 'Alb.DNSName'
 
 
