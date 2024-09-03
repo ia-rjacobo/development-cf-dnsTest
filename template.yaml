@@ -29,7 +29,7 @@ Resources:
   DNS:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneId: !Ref hostedZoneId
+      HostedZoneId: !Ref HostedZoneId
       Comment: Zone apex alias targeted to LoadBalancer.
       RecordSets:
       - Name: !Ref domainName
