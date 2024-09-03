@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
-  HostedZoneId:
+  hostedZoneId:
     Description: Description
     Type: String
     Default: Z03295403K1WWCVX1E07K
@@ -16,7 +16,7 @@ Parameters:
   blueStackFeAlb:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint  
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
   greenStackFeAlb:
     Description: Description
     Type: String
@@ -29,16 +29,19 @@ Resources:
   DNS:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneId: !Ref HostedZoneId
+      HostedZoneId: !Ref hostedZoneId
       Comment: Zone apex alias targeted to LoadBalancer.
       RecordSets:
       - Name: !Ref domainName
         Type: A
         AliasTarget:
-          HostedZoneId: !Ref HostedZoneId
-          DNSName: 
-          - Fn::ImportValue: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
-              #Fn::Sub: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint}
+          #HostedZoneId: !Ref hostedZoneId
+          DNSName: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint #!GetAtt 'Alb.DNSName'
+
+
+        
+        # - !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+
           
 #Outputs:
 
