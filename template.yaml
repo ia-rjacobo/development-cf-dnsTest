@@ -35,7 +35,7 @@ Resources:
       - Name: !Ref domainName
         Type: A
         AliasTarget:
-          HostedZoneId: !GetAtt 'Alb.CanonicalHostedZoneID'
+          HostedZoneId: !Ref HostedZoneId
           DNSName: !If [conditionRelease, !Ref blueStackFeAlb, !Ref greenStackFeAlb]
           #- Fn::ImportValue:
               #Fn::Sub: "${NetworkStackName}-FeAlbEndpoint"
