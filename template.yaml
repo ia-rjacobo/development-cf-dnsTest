@@ -35,12 +35,9 @@ Resources:
       - Name: !Ref domainName
         Type: A
         AliasTarget:
-          HostedZoneId: !Ref hostedZoneId
-          DNSName: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint #!GetAtt 'Alb.DNSName'
+          HostedZoneId: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
+          DNSName: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
 
-
-        
-        # - !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
 
           
 #Outputs:
