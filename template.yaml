@@ -45,9 +45,9 @@ Resources:
           AliasTarget:
             HostedZoneId: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
               Fn::ImportValue:
-                !Sub blueStackFeAlbZoneId
+                !Ref blueStackFeAlbZoneId
             DNSName: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
               Fn::ImportValue:
-                !Sub blueStackFeAlbEndpoint
+                !Ref blueStackFeAlbEndpoint
 
 #Outputs:
