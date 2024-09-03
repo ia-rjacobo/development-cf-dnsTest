@@ -13,17 +13,25 @@ Parameters:
     Description: Description
     Type: String
     Default: blue
-  blueStackFeAlb:
+  blueStackFeAlbZoneId:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
-  greenStackFeAlb:
+    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpointHostedZone
+  blueStackFeAlbEndpoint:
     Description: Description
     Type: String
-    Default: cloud-pubdmogrn-2024-08280810-FeAlbEndpoint
+    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpoint #cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+  greenStackFeAlbZoneId:
+    Description: Description
+    Type: String
+    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpointHostedZone
+  greenStackFeAlbEndpoint:
+    Description: Description
+    Type: String
+    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpoint #cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
 
-Conditions:
-    conditionRelease: !Equals ["blue", !Ref "release"]
+#Conditions:
+#  conditionRelease: 
 
 Resources:
   DNS:
@@ -32,13 +40,14 @@ Resources:
       HostedZoneId: !Ref hostedZoneId
       Comment: Zone apex alias
       RecordSets:
-      - Name: !Ref domainName
-        Type: A
-        AliasTarget:
-          HostedZoneId: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
-          DNSName: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+        - Name: !Ref domainName
+          Type: A
+          AliasTarget:
+            HostedZoneId: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
+              Fn::ImportValue:
+                !Ref blueStackFeAlbZoneId
+            DNSName: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+              Fn::ImportValue:
+                !Ref blueStackFeAlbEndpoint
 
-
-          
 #Outputs:
-
