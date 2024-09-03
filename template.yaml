@@ -4,23 +4,23 @@ Parameters:
   HostedZoneId:
     Description: Description
     Type: String
-    Value: Z03295403K1WWCVX1E07K
+    Default: Z03295403K1WWCVX1E07K
   domainName:
     Description: Description
     Type: String
-    Value: qas.demo.inductiveautomation.com
+    Default: qas.demo.inductiveautomation.com
   release:
     Description: Description
     Type: String
-    Value: blue
+    Default: blue
   blueStackFeAlb:
     Description: Description
     Type: String
-    Value: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint  
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint  
   greenStackFeAlb:
     Description: Description
     Type: String
-    Value: cloud-pubdmogrn-2024-08280810-FeAlbEndpoint
+    Default: cloud-pubdmogrn-2024-08280810-FeAlbEndpoint
 
 Conditions:
     conditionRelease: !Equals ["blue", !Ref "release"]
