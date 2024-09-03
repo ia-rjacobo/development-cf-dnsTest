@@ -43,7 +43,7 @@ Resources:
         - Name: !Ref domainName
           Type: A
           AliasTarget:
-            HostedZoneId: !ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
+            HostedZoneId: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
               Fn::ImportValue:
                 !Ref blueStackFeAlbZoneId
             DNSName: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
