@@ -16,11 +16,11 @@ Parameters:
   blueStackFeAlbZoneId:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpointHostedZone
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
   blueStackFeAlbEndpoint:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpoint
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
   greenStackFeAlbZoneId:
     Description: Description
     Type: String
@@ -28,7 +28,7 @@ Parameters:
   greenStackFeAlbEndpoint:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint #cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
 
 #Conditions:
 #  conditionRelease: 
