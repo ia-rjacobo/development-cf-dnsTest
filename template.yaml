@@ -1,31 +1,29 @@
 AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
-HostedZoneId:
+  HostedZoneId:
     Description: Description
     Type: String
     Value: Z03295403K1WWCVX1E07K
-domainName:
+  domainName:
     Description: Description
     Type: String
     Value: qas.demo.inductiveautomation.com
-release:
+  release:
     Description: Description
     Type: String
     Value: blue
-blueStackFeAlb:
+  blueStackFeAlb:
     Description: Description
     Type: String
-    Value: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
-    
-greenStackFeAlb:
+    Value: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint  
+  greenStackFeAlb:
     Description: Description
     Type: String
     Value: cloud-pubdmogrn-2024-08280810-FeAlbEndpoint
 
 Conditions:
     conditionRelease: !Equals ["blue", !Ref "release"]
-    #!If [conditionRelease, !Ref blueStackName, !Ref greenStackName]
 
 Resources:
   DNS:
