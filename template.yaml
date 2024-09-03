@@ -38,7 +38,7 @@ Resources:
           HostedZoneId: !Ref HostedZoneId
           DNSName: 
           - Fn::ImportValue:
-              Fn::Sub: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+              Fn::Sub: ${cloud-pubdmoblu-2024-08280810-FeAlbEndpoint}
           
 #Outputs:
 
