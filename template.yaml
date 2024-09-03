@@ -20,15 +20,15 @@ Parameters:
   blueStackFeAlbEndpoint:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpoint #cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpoint
   greenStackFeAlbZoneId:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpointHostedZone
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
   greenStackFeAlbEndpoint:
     Description: Description
     Type: String
-    Default: cloud-pubdmoblu-2024-08280810::FeAlbEndpoint #cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
+    Default: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint #cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
 
 #Conditions:
 #  conditionRelease: 
@@ -45,9 +45,9 @@ Resources:
           AliasTarget:
             HostedZoneId: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpointHostedZone
               Fn::ImportValue:
-                !Ref blueStackFeAlbZoneId
+                !Sub blueStackFeAlbZoneId
             DNSName: #!ImportValue cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
               Fn::ImportValue:
-                !Ref blueStackFeAlbEndpoint
+                !Sub blueStackFeAlbEndpoint
 
 #Outputs:
