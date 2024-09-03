@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+HostedZoneId:
+    Description: Description
+    Type: String
+    Value: Z03295403K1WWCVX1E07K
+domainName:
+    Description: Description
+    Type: String
+    Value: qas.demo.inductiveautomation.com
+release:
+    Description: Description
+    Type: String
+    Value: blue
+blueStackName:
+    Description: Description
+    Type: String
+    Value: cloud-pubdmoblu-2024-08280810
+    
+greenStackName:
+    Description: Description
+    Type: String
+    Value: cloud-pubdmogrn-2024-08280810
+
+Conditions:
+    conditionRelease: !Equals ["blue", !Ref "release"]
+    #!If [conditionRelease, !Ref blueStackName, !Ref greenStackName]
+
+Resources:
+  DNS:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneId: !Ref hostedZoneId
+      Comment: Zone apex alias targeted to LoadBalancer.
+      RecordSets:
+      - Name: !Ref domainName
+        Type: A
+        AliasTarget:
+          HostedZoneId: !GetAtt 'Alb.CanonicalHostedZoneID'
+          DNSName: !If [conditionRelease, ${blueStackName}-FeAlbEndpoint, ${greenStackName}-FeAlbEndpoint]
+          #- Fn::ImportValue:
+              #Fn::Sub: "${NetworkStackName}-FeAlbEndpoint"
+          
+#Outputs:
+
