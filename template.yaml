@@ -13,15 +13,15 @@ release:
     Description: Description
     Type: String
     Value: blue
-blueStackName:
+blueStackFeAlb:
     Description: Description
     Type: String
-    Value: cloud-pubdmoblu-2024-08280810
+    Value: cloud-pubdmoblu-2024-08280810-FeAlbEndpoint
     
-greenStackName:
+greenStackFeAlb:
     Description: Description
     Type: String
-    Value: cloud-pubdmogrn-2024-08280810
+    Value: cloud-pubdmogrn-2024-08280810-FeAlbEndpoint
 
 Conditions:
     conditionRelease: !Equals ["blue", !Ref "release"]
@@ -38,7 +38,7 @@ Resources:
         Type: A
         AliasTarget:
           HostedZoneId: !GetAtt 'Alb.CanonicalHostedZoneID'
-          DNSName: !If [conditionRelease, ${blueStackName}-FeAlbEndpoint, ${greenStackName}-FeAlbEndpoint]
+          DNSName: !If [conditionRelease, !Ref blueStackFeAlb, !Ref greenStackFeAlb]
           #- Fn::ImportValue:
               #Fn::Sub: "${NetworkStackName}-FeAlbEndpoint"
           
